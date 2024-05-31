@@ -57,7 +57,8 @@ def compound_class(msTuple, method = 'MSCC'):
         cclassCounts['Carbohydrate'] = 0
         cclassCounts['Amino-sugar'] = 0
         cclassCounts['Peptide'] = 0
-        cclassCounts['Oxy-aromatic phytochemical'] = 0
+        cclassCounts['Tannin'] = 0
+	cclassCounts['Lignin'] = 0
         cclassCounts['Nucleotide'] = 0
         cclassCounts['Not matched'] = 0
         cclassCounts['Double matched'] = 0
@@ -80,8 +81,10 @@ def compound_class(msTuple, method = 'MSCC'):
                     cClass.append('Carbohydrate')
                 if ratios['OC'] >= 0.61 and ratios['HC'] >= 1.45 and ratios['NC'] <= 0.2 and ratios['NC'] > 0.07 and ratios['PC'] < 0.3 and ratios['NP'] <= 2 and c['O'] >= 3 and c['N'] >= 1:
                     cClass.append('Amino-sugar')
-                if ratios['OC'] <= 1.15 and ratios['HC'] < 1.32 and ratios['NC'] < 0.126 and ratios['PC'] <= 0.2 and ratios['NP'] <= 3:
-                    cClass.append('Oxy-aromatic phytochemical')
+                if ratios['OC'] <= 0.7 and ratios['HC'] < 1.6 and ratios['NC'] < 0.126 and ratios['PC'] <= 0.2 and ratios['NP'] <= 3:
+                    cClass.append('Lignin')
+	   	if ratios['OC'] <= 1.2 and ratios['OC'] >0.7 and  ratios['HC'] < 1.6 and ratios['NC'] < 0.126 and ratios['PC'] <= 0.2 and ratios['NP'] <= 3:
+                    cClass.append('Tannin')
                 if ratios['OC'] > 0.12 and ratios['OC'] <= 0.6 and ratios['HC'] > 0.9 and ratios['HC'] < 2.5 and ratios['NC'] >= 0.126 and ratios['NC'] <= 0.7  and ratios['PC'] < 0.17 and c['N'] >= 1:
                     cClass.append('Peptide')
                 elif ratios['OC'] > 0.6 and ratios['OC'] <= 1 and ratios['HC'] > 1.2 and ratios['HC'] < 2.5 and ratios['NC'] > 0.2 and ratios['NC'] <= 0.7 and ratios['PC'] < 0.17 and c['N'] >= 1: 
